@@ -4000,7 +4000,7 @@
     // ========================================
     // 🎬 VIDEO GALLERY & MODAL
     // ========================================
-    let currentVideoIndex = 0;
+   /* let currentVideoIndex = 0;
     const videoModal = document.getElementById('videoModal');
     const videoTitle = document.getElementById('videoTitle');
     const modalVideoPlayer = document.getElementById('modalVideoPlayer');
@@ -4056,8 +4056,82 @@
       if (e.target === videoModal) {
         closeVideoModal();
       }
-    });
-    
+    });*/
+
+
+let currentVideoIndex = 0;
+
+const videoModal = document.getElementById('videoModal');
+const videoTitle = document.getElementById('videoTitle');
+const modalVideoPlayer = document.getElementById('modalVideoPlayer');
+const modalVideoSource = document.getElementById('modalVideoSource');
+const videoPlaceholder = document.getElementById('videoPlaceholder');
+
+function openVideoModal(index) {
+  currentVideoIndex = index;
+  displayVideo(currentVideoIndex);
+
+  videoModal.classList.add('open');
+  document.body.classList.add('modal-open'); // FIX
+}
+
+function displayVideo(index) {
+  const video = videos[index];
+  videoTitle.textContent = video.title;
+
+  modalVideoPlayer.pause();
+  modalVideoPlayer.currentTime = 0;
+
+  modalVideoSource.src = video.src;
+  modalVideoPlayer.load();
+
+  modalVideoPlayer.style.display = 'none';
+  videoPlaceholder.style.display = 'flex';
+
+  modalVideoPlayer.onloadeddata = () => {
+    modalVideoPlayer.style.display = 'block';
+    videoPlaceholder.style.display = 'none';
+  };
+
+  modalVideoPlayer.onerror = () => {
+    modalVideoPlayer.style.display = 'none';
+    videoPlaceholder.style.display = 'flex';
+  };
+}
+
+function navigateVideo(direction) {
+  modalVideoPlayer.pause();
+  modalVideoPlayer.currentTime = 0;
+
+  currentVideoIndex =
+    (currentVideoIndex + direction + videos.length) % videos.length;
+
+  displayVideo(currentVideoIndex);
+}
+
+function closeVideoModal() {
+  modalVideoPlayer.pause();
+  modalVideoPlayer.currentTime = 0;
+
+  videoModal.classList.remove('open');
+  document.body.classList.remove('modal-open'); // FIX
+}
+
+/* click outside video to close */
+videoModal.addEventListener('click', (e) => {
+  if (e.target === videoModal) {
+    closeVideoModal();
+  }
+});
+
+/* ESC key close (professional touch) */
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && videoModal.classList.contains('open')) {
+    closeVideoModal();
+  }
+});
+
+   
     // ========================================
     // 📖 SLAM BOOK & MODAL
     // ========================================
@@ -4211,3 +4285,4 @@
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c390a78e5bf0c04',t:'MTc2OTM1NzQyOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 
 </html>
+
