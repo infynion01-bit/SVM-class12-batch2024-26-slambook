@@ -2065,10 +2065,9 @@
        
        CURRENT COUNT: 2 songs
   -->
-  <audio class="bg-music-track"><source src="Nilaavil Ellame.mp3" type="audio/mpeg" autoplay loop> <source src="song-1.m4a" type="audio/mp4">
+  <audio  class="bg-music-track"><source src="Nilaavil Ellame.mp3" type="audio/mpeg" autoplay loop> <source src="song-1.m4a" type="audio/mp4">
   </audio>
-  <audio class="bg-music-track"><source src="Woh Din.mp3" type="audio/mpeg"> <source src="song-2.m4a" type="audio/mp4">
-  </audio><!-- ===== TO ADD MORE SONGS: Copy from here =====
+ <!-- ===== TO ADD MORE SONGS: Copy from here =====
   <audio class="bg-music-track">
     <source src="song-3.mp3" type="audio/mpeg">
     <source src="song-3.m4a" type="audio/mp4">
@@ -2855,7 +2854,7 @@
    </div>
    <div class="video-player-wrapper">
     <div class="video-display" id="videoDisplay"><button class="fullscreen-btn" id="fullscreenBtn" title="Fullscreen View" aria-label="Fullscreen View">⛶</button>
-     <video id="mainVideoPlayer" class="main-video-player"><source id="mainVideoSource" src="" type="video/mp4"> Your browser does not support the video tag.
+     <video id="mainVideoPlayer" class="main-video-player"><source id="mainVideoSource" src="farevid.mp4" type="video/mp4"> Your browser does not support the video tag.
      </video>
      <div class="video-placeholder-text">
       <div>
@@ -3012,7 +3011,7 @@
        { src: 'movie-4.mp4', title: 'Your Movie Title' },
     */
     const moviesData = [
-      { src: 'movie-1.mp4', title: 'Annual Day Performance - Complete Show' },
+      { src: 'farevid.mp4', title: 'Annual Day Performance - Complete Show' },
       { src: 'movie-2.mp4', title: 'Class Trip Documentary' },
       { src: 'movie-3.mp4', title: 'Farewell Ceremony - Full Event' }
       // ADD NEW MOVIES HERE
@@ -4025,6 +4024,45 @@ function resetSlamScroll() {
       setTimeout(rotateQuotes, 10000);
       initializeMoviePlayer();
     });
+
+
+
+
+
+
+const bgMusicTracks = document.querySelectorAll(".bg-music-track");
+const allVideos = document.querySelectorAll("video");
+
+function pauseBgMusic() {
+  bgMusicTracks.forEach(track => {
+    track.pause();
+  });
+}
+
+function playBgMusic() {
+  bgMusicTracks.forEach(track => {
+    track.play();
+  });
+}
+
+allVideos.forEach(video => {
+  video.addEventListener("play", () => {
+    pauseBgMusic();
+  });
+
+  video.addEventListener("pause", () => {
+    playBgMusic();
+  });
+
+  video.addEventListener("ended", () => {
+    playBgMusic();
+  });
+});
+
+
+
+
+
   </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c390a78e5bf0c04',t:'MTc2OTM1NzQyOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
