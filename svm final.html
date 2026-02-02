@@ -660,7 +660,7 @@
     }
     
     /* Video Gallery */
-    /* .video-grid {
+    .video-grid {
       max-width: 1400px;
       margin: 0 auto;
       display: grid;
@@ -749,7 +749,7 @@
       line-height: 1.7;
     }
     
-    /* Video Modal *//*
+    /* Video Modal */
     .video-modal {
       position: fixed;
       top: 0;
@@ -849,493 +849,9 @@
     
     .video-modal-nav.next {
       right: 40px;
-    }   */
-
-/*
-.video-grid {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-  gap: 2.5rem;
-}
-
-.video-card {
-  background: white;
-  border-radius: 25px;
-  overflow: hidden;
-  box-shadow: 0 15px 40px rgba(74, 72, 71, 0.1);
-  cursor: pointer;
-  transition: all 0.4s ease;
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.video-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.video-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 25px 60px rgba(74, 72, 71, 0.15);
-}
-
-.video-thumbnail {
-  position: relative;
-  aspect-ratio: 16/9;
-  background: linear-gradient(135deg, var(--color-charcoal), #6A6868);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.video-thumbnail-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.video-card:hover .video-thumbnail-img {
-  transform: scale(1.1);
-}
-
-.play-btn {
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  color: var(--color-charcoal);
-  transition: all 0.4s ease;
-  z-index: 2;
-}
-
-.video-card:hover .play-btn {
-  background: var(--color-dusty-pink);
-  color: white;
-  transform: scale(1.15);
-}
-
-.video-info {
-  padding: 2rem;
-}
-
-.video-title {
-  font-family: var(--font-heading);
-  font-size: 1.4rem;
-  color: var(--color-charcoal);
-  margin-bottom: 0.8rem;
-  font-weight: 600;
-}
-
-.video-desc {
-  font-size: 1rem;
-  color: var(--color-warm-grey);
-  line-height: 1.7;
-}
-
-/* ================= VIDEO MODAL ================= */
-/*
-.video-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.7); /* FIXED: was too dark */
-/*  z-index: 3000;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-
-.video-modal.open {
-  display: flex;
-  animation: fadeIn 0.4s ease;
-}
-
-.video-player-container {
-  position: relative; /* FIX */
-  /*z-index: 5;         /* FIX */
-/*  max-width: 1000px;
-  width: 100%;
-  aspect-ratio: 16/9;
-  background: #000;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
-}
-
-.video-player-placeholder {
-  position: relative; /* FIX */
-/*  z-index: 6;         /* FIX */
-/*  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  gap: 1rem;
-}
-
-.video-player-placeholder .play-icon {
-  font-size: 5rem;
-  color: var(--color-dusty-pink);
-}
-
-.video-player-placeholder p {
-  font-family: var(--font-script);
-  font-size: 1.5rem;
-  color: rgba(255, 255, 255, 0.85);
-}
-
-/* FORCE TEXT VISIBILITY INSIDE MODAL */
-/*.video-modal .video-title,
-.video-modal .video-desc {
-  color: #ffffff;
-}
-
-.video-modal-close {
-  position: absolute;
-  top: 30px;
-  right: 40px;
-  font-size: 3rem;
-  color: white;
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  z-index: 10;
-}
-
-.video-modal-close:hover {
-  transform: scale(1.2) rotate(90deg);
-}
-
-.video-modal-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 60px;
-  height: 60px;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  color: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 10;
-}
-
-.video-modal-nav:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-50%) scale(1.1);
-}
-
-.video-modal-nav.prev {
-  left: 40px;
-}
-
-.video-modal-nav.next {
-  right: 40px;
-}
-
-/* ================= MOBILE FIXES ================= */
-
-/*@media (max-width: 600px) {
-  .video-modal-nav {
-    width: 45px;
-    height: 45px;
-    font-size: 1.5rem;
-  }
-
-  .video-modal-nav.prev {
-    left: 10px;
-  }
-
-  .video-modal-nav.next {
-    right: 10px;
-  }
-
-  .video-modal-close {
-    top: 15px;
-    right: 20px;
-    font-size: 2.2rem;
-  }
-   }
-
-
-   
-   
-   
-   
-   
-   
-   body.modal-open {
-  overflow: hidden;
-}
-
-.video-modal {
-  isolation: isolate;
-  background: rgba(0, 0, 0, 0.85);
-   }
-   
- 
-   /* ================= VIDEO GRID ================= */
-
-.video-grid {
-  max-width: 1400px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* mobile-safe */
-  gap: 2.5rem;
-}
-
-.video-card {
-  background: white;
-  border-radius: 25px;
-  overflow: hidden;
-  box-shadow: 0 15px 40px rgba(74, 72, 71, 0.1);
-  cursor: pointer;
-  transition: all 0.4s ease;
-  opacity: 0;
-  transform: translateY(30px);
-}
-
-.video-card.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.video-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 25px 60px rgba(74, 72, 71, 0.15);
-}
-
-.video-thumbnail {
-  position: relative;
-  aspect-ratio: 16/9;
-  background: linear-gradient(135deg, var(--color-charcoal), #6A6868);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.video-thumbnail-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s ease;
-}
-
-.video-card:hover .video-thumbnail-img {
-  transform: scale(1.1);
-}
-
-.play-btn {
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  color: var(--color-charcoal);
-  transition: all 0.4s ease;
-  z-index: 2;
-}
-
-.video-card:hover .play-btn {
-  background: var(--color-dusty-pink);
-  color: white;
-  transform: scale(1.15);
-}
-
-.video-info {
-  padding: 2rem;
-}
-
-.video-title {
-  font-family: var(--font-heading);
-  font-size: 1.4rem;
-  color: var(--color-charcoal);
-  margin-bottom: 0.8rem;
-  font-weight: 600;
-}
-
-.video-desc {
-  font-size: 1rem;
-  color: var(--color-warm-grey);
-  line-height: 1.7;
-}
-
-/* ================= VIDEO MODAL ================= */
-
-.video-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.7);
-  z-index: 3000;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-
-.video-modal.open {
-  display: flex;
-  animation: fadeIn 0.4s ease;
-}
-
-/* VIDEO HEIGHT FIX (SHORTER VERSION) */
-.video-player-container {
-  position: relative;
-  z-index: 5;
-  max-width: 1000px;
-  width: 100%;
-  height: 65vh;            /* 🔥 SHORTER HEIGHT */
-  background: #000;
-  border-radius: 20px;
-  overflow: hidden;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
-}
-
-.video-player-container video {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
-
-.video-player-placeholder {
-  position: relative;
-  z-index: 6;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  gap: 1rem;
-}
-
-.video-player-placeholder .play-icon {
-  font-size: 5rem;
-  color: var(--color-dusty-pink);
-}
-
-.video-player-placeholder p {
-  font-family: var(--font-script);
-  font-size: 1.5rem;
-  color: rgba(255, 255, 255, 0.85);
-}
-
-/* FORCE TEXT VISIBILITY INSIDE MODAL */
-.video-modal .video-title,
-.video-modal .video-desc {
-  color: #ffffff;
-}
-
-.video-modal-close {
-  position: absolute;
-  top: 30px;
-  right: 40px;
-  font-size: 3rem;
-  color: white;
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  z-index: 10;
-}
-
-.video-modal-close:hover {
-  transform: scale(1.2) rotate(90deg);
-}
-
-.video-modal-nav {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 60px;
-  height: 60px;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 2rem;
-  color: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  z-index: 10;
-}
-
-.video-modal-nav:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: translateY(-50%) scale(1.1);
-}
-
-.video-modal-nav.prev {
-  left: 40px;
-}
-
-.video-modal-nav.next {
-  right: 40px;
-}
-
-/* ================= MOBILE FIXES ================= */
-
-@media (max-width: 600px) {
-  .video-modal-nav {
-    width: 45px;
-    height: 45px;
-    font-size: 1.5rem;
-  }
-
-  .video-modal-nav.prev {
-    left: 10px;
-  }
-
-  .video-modal-nav.next {
-    right: 10px;
-  }
-
-  .video-modal-close {
-    top: 15px;
-    right: 20px;
-    font-size: 2.2rem;
-  }
-
-  .video-player-container {
-    height: 75vh;           /* 🔥 MOBILE: shorter than before */
-  }
-   }
-   
-   
-   
-   
-   
-   
-   /* Slam Book */
-
-   
+    }
+    
+    /* Slam Book */
     .slambook-grid {
       max-width: 1400px;
       margin: 0 auto;
@@ -3154,12 +2670,12 @@
      </div>
     </div><!-- ===== STUDENT 21 ===== 
            File needed: student-6.jpg -->
-    <div class="slambook-card" onclick="openSlambookModal(20)"><img src="student-6.jpg" alt="Vikram Singh" class="slambook-photo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+    <div class="slambook-card" onclick="openSlambookModal(20)"><img src="Sachin.jpg" alt="Vikram Singh" class="slambook-photo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
      <div class="slambook-photo-placeholder" style="display:none;">
       👦
      </div>
      <div class="slambook-info">
-      <h3 class="slambook-name">Steve Harrington</h3>
+      <h3 class="slambook-name">SACHIN S.S.</h3>
       <p class="slambook-nickname">"The Quiet One"</p>
       <p class="slambook-preview">"Still waters run deep... "</p>
      </div>
@@ -3217,67 +2733,79 @@
      <p>"No matter where life takes us, remember this version of us!🤧🖤"</p><span class="author">- Anamika S Anil</span>
     </div><!-- ===== MESSAGE 4 ===== -->
     <div class="sticky-note" onclick="openMessageModal(3)">
-     <p>"thank you all I am not a emotional guy and I don\'t show that much of a emotion in .........."</p><span class="author">- V Avinesh kumar </span>
-    </div><!-- ===== MESSAGE 5 ===== -->
+     <p>"thank you all I am not a emotional guy and I don\'t show that much of a emotion in .......... "</p><span class="author">- V Avinesh kumar </span>
+    </div>
     <div class="sticky-note" onclick="openMessageModal(4)">
+     <p>"I just wanna say is that we will always......... "</p><span class="author">- V Avinesh kumar </span>
+    </div><!-- ===== MESSAGE 5 ===== -->
+    <div class="sticky-note" onclick="openMessageModal(5)">
      <p>"The future belongs to those who believe in the beauty of their dreams"</p><span class="author">- BS NANDAKISHORE </span>
     </div><!-- ===== MESSAGE 6 ===== -->
-    <div class="sticky-note" onclick="openMessageModal(5)">
+    <div class="sticky-note" onclick="openMessageModal(6)">
      <p>"Live your life to the fullest❤️All the best❤️"</p><span class="author">- Gouri akhila</span>
     </div><!-- ===== MESSAGE 7 ===== -->
-    <div class="sticky-note" onclick="openMessageModal(6)">
+    <div class="sticky-note" onclick="openMessageModal(7)">
      <p>"Don't burn yourself to warm others"</p><span class="author">- Shabana SS</span>
     </div><!-- ===== MESSAGE 8 ===== -->
-    <div class="sticky-note" onclick="openMessageModal(7)">
+    <div class="sticky-note" onclick="openMessageModal(8)">
      <p>"Vallapozhum vilikane guys💗"</p><span class="author">- Adarsh</span>
     </div><!-- ===== MESSAGE 9 ===== -->
-    <div class="sticky-note" onclick="openMessageModal(8)">
+    <div class="sticky-note" onclick="openMessageModal(9)">
      <p>"Remember me as a drop of water in the cascade of ur memory 🥹"</p><span class="author">- Aiswarya s</span>
     </div><!-- ===== MESSAGE 10 ===== -->
-    <div class="sticky-note" onclick="openMessageModal(9)">
+    <div class="sticky-note" onclick="openMessageModal(10)">
      <p>"Hotwheels vaangi tharoo... Allel oru  tourist bus aayalum mathi.. 🥲"</p><span class="author">- Ak</span>
     </div>
-     <div class="sticky-note" onclick="openMessageModal(10)">
+     <div class="sticky-note" onclick="openMessageModal(11)">
      <p>"As I approach the end of this memorable journey, it's important to express how....... "</p><span class="author">- Akshara R Lal</span>
     </div>
-    <div class="sticky-note" onclick="openMessageModal(11)">
-     <p> "The cries, laughters, gossips,cringe-worthy moments,embarassing times– ,Each experience...... "</p><span class="author">- Akshara R Lal</span>
+    <div class="sticky-note" onclick="openMessageModal(12)">
+     <p>"While I may not be the most expressive person by nature, I feel compelled to share my...... "</p><span class="author">- Akshara R Lal</span>
     </div>
-     <div class="sticky-note" onclick="openMessageModal(12)">
-     <p>"" Chase your dreams, laugh often, and make every moment count!”"</p><span class="author">- Sandra S</span>
+    <div class="sticky-note" onclick="openMessageModal(13)">
+     <p>"and received invaluable support from an incredible group of teachers....... "</p><span class="author">- Akshara R Lal</span>
     </div>
-     <div class="sticky-note" onclick="openMessageModal(13)">
-     <p>"Sucess doesn't come overnight but with our hardwork and confidence..... So go ahead till you reach your destination ❤️‍🔥"</p><span class="author">- Akshara. S</span>
-    </div>
-     <div class="sticky-note" onclick="openMessageModal(14)">
-     <p>"BSc padichalum MSc padichalum enea marakaruthu But seriously thanks for all memories and even..... "</p><span class="author">- Radhika </span>
+    <div class="sticky-note" onclick="openMessageModal(14)">
+     <p> "Each experience is deeply treasured and the memories we have created are priceless. Despite ......... "</p><span class="author">- Akshara R Lal</span>
     </div>
      <div class="sticky-note" onclick="openMessageModal(15)">
-     <p>"I miss you my friends"</p><span class="author">- Sangeeth kumar.M</span>
+     <p>"" Chase your dreams, laugh often, and make every moment count!”"</p><span class="author">- Sandra S</span>
     </div>
      <div class="sticky-note" onclick="openMessageModal(16)">
-     <p>"Never break bondss! "</p><span class="author">- Nihal M.S</span>
+     <p>"Sucess doesn't come overnight but with our hardwork and confidence..... So go ahead till you reach your destination ❤️‍🔥"</p><span class="author">- Akshara. S</span>
     </div>
      <div class="sticky-note" onclick="openMessageModal(17)">
-     <p>"Class room oru HOME aaki thannavar 🥹 Will miss u guyss"</p><span class="author">- Sreelekshmi </span>
+     <p>"BSc padichalum MSc padichalum enea marakaruthu But seriously thanks for all memories and even..... "</p><span class="author">- Radhika </span>
     </div>
-     <div class="sticky-note" onclick="openMessageModal(18)">
-     <p>"Keep in touch"</p><span class="author">- Sandra. A. S</span>
+    <div class="sticky-note" onclick="openMessageModal(18)">
+     <p>"I hope we could always stay as be.........  "</p><span class="author">- Radhika </span>
     </div>
      <div class="sticky-note" onclick="openMessageModal(19)">
-     <p>"No matter where life takes you, believe in yourself."</p><span class="author">- S.Mohammed Afroz </span>
+     <p>"I miss you my friends"</p><span class="author">- Sangeeth kumar.M</span>
     </div>
      <div class="sticky-note" onclick="openMessageModal(20)">
-     <p>"The two years felt just like Two Days "</p><span class="author">- Goutham krishna </span>
+     <p>"Never break bondss! "</p><span class="author">- Nihal M.S</span>
     </div>
      <div class="sticky-note" onclick="openMessageModal(21)">
-     <p>""</p><span class="author">- </span>
+     <p>"Class room oru HOME aaki thannavar 🥹 Will miss u guyss"</p><span class="author">- Sreelekshmi </span>
     </div>
      <div class="sticky-note" onclick="openMessageModal(22)">
-     <p>""</p><span class="author">- </span>
+     <p>"Keep in touch"</p><span class="author">- Sandra. A. S</span>
     </div>
      <div class="sticky-note" onclick="openMessageModal(23)">
-     <p>"“This slam book is more than just pages. It holds stories, smiles, and unforgettable moments. On behalf of INFYNION, heartfelt wishes for a future filled with success, happiness, and lasting connections.”"</p><span class="author">- INFYNION</span>
+     <p>"No matter where life takes you, believe in yourself."</p><span class="author">- S.Mohammed Afroz </span>
+    </div>
+     <div class="sticky-note" onclick="openMessageModal(24)">
+     <p>"The two years felt just like Two Days "</p><span class="author">- Goutham krishna </span>
+    </div>
+     <div class="sticky-note" onclick="openMessageModal(25)">
+     <p>"Believe in yourself "</p><span class="author">- SACHIN S.S </span>
+    </div>
+     <div class="sticky-note" onclick="openMessageModal(26)">
+     <p>""</p><span class="author">- </span>
+    </div>
+     <div class="sticky-note" onclick="openMessageModal(27)">
+     <p>"“On behalf of INFYNION, heartfelt wishes for a future filled with success, happiness, and lasting connections.”"</p><span class="author">- INFYNION</span>
     </div><!-- ===== TO ADD MESSAGE 11: Copy from here =====
       <div class="sticky-note" onclick="openMessageModal(10)">
         <p>"Your message text here."</p>
@@ -3944,12 +3472,12 @@
          emotional: '“Not blood, not same house… still my people.”'
        },
       {
-         photo: 'g.jpg',
-         name: 'Steve Harrington',
+         photo: 'Sachin.jpg',
+         name: 'SACHIN S.S.',
          nickname: 'The Nickname',
-         memory: '',
-         funny: '',
-         emotional: ''
+         memory: 'Farewell ',
+         funny: 'None',
+         emotional: 'To miss you guy\'s '
        },
       {
          photo: 'g.jpg',
@@ -4024,28 +3552,32 @@
       { text: '"Ellarkkum Joli kitteett 1st enikk chelav cheyyanamm..... Aa joli kittannn njn prarthikkum😌"', author: '- Midhun Sekhar .M.R' },
       { text: '"Remember who you are"', author: '- Soorya P' },
       { text: '"No matter where life takes us, remember this version of us!🤧🖤"', author: '- Anamika S Anil' },
-      { text: '"thank you all I am not a emotional guy and I don\'t show that much of a emotion in person but I felt something is fading away from me and will miss the smiles we shared and I just wanna say is that we will always be together ❤️ and and (we will put a reunion in 10 years so u better work hard )"', author: '- V Avinesh kumar ' },
+      { text: '"thank you all I am not a emotional guy and I don\'t show that much of a emotion in person but I felt something is fading away from me and will miss the smiles we shared and "', author: '- V Avinesh kumar ' },
+     { text: '"I just wanna say is that we will always be together ❤️ and (we will put a reunion in 10 years so u better work hard )"', author: '- V Avinesh kumar' },
       { text: '"The future belongs to those who believe in the beauty of their dreams"', author: '- BS NANDAKISHORE ' },
       { text: '"Live your life to the fullest❤️All the best❤️"', author: '- Gouri akhila' },
       { text: '"Don\'t burn yourself to warm others"', author: '- Shabana S S' },
       { text: '"Vallapozhum vilikane guys💗"', author: '- Adarsh' },
       { text: '"Remember me as a drop of water in the cascade of ur memory 🥹"', author: '- Aiswarya s' },
       { text: '"Hotwheels vaangi tharoo... Allel oru  tourist bus aayalum mathi.. 🥲"', author: '- AK' },
-      { text: ' "As I approach the end of this memorable journey, it\'s important to express how being in this school has truly shaped me in profound ways. While I may not be the most expressive person by nature, I feel compelled to share my deep connection and emotional attachment to this place. During my time here, I have forged lasting friendships, encountered a supportive and understanding life partner who has enriched my perspective on this world, and received invaluable support from an incredible group of teachers. "', author: '- Akshara R Lal' },
-      { text: '"The cries, laughters, gossips,cringe-worthy moments,embarassing times– ,Each experience is deeply treasured and the memories we have created are priceless. Despite the challenges and personal growth I faced, I have come to embrace all facets of my journey here. Looking back, it feels as I was in 11th grade. I thank you,my friends, teachers and my walking precious gem who I really love and deserves the world, for shaping me into who I am. Thank you :)"', author: '- Akshara R Lal' },
-      
+      { text: ' "As I approach the end of this memorable journey, it\'s important to express how being in this school has truly shaped me in profound ways.  "', author: '- Akshara R Lal' },
+     { text:  '"While I may not be the most expressive person by nature, I feel compelled to share my deep connection and emotional attachment to this place. "', author: '- Akshara R Lal' },
+      { text: '" During my time here, I have forged lasting friendships, encountered a supportive and understanding life partner who has enriched my perspective on this world,  "', author: '- Akshara R Lal' },
+      { text: '"and received invaluable support from an incredible group of teachers. The cries, laughters, gossips,cringe-worthy moments,embarassing times– ,"', author: '- Akshara R Lal' },
+     { text: '"Each experience is deeply treasured and the memories we have created are priceless. Despite the challenges and personal growth I faced, I have come to embrace all facets of my journey here."', author: '- Akshara R Lal' },
       { text: '"Chase your dreams, laugh often, and make every moment count!”"', author: '- Sandra S' },
       { text: '"Success doesn\'t come overnight but with our hardwork and confidence..... So go ahead till you reach your destination ❤️‍🔥"', author: '- Akshara. S' },
-      { text: '"BSc padichalum MSc padichalum enea marakaruthu\nBut seriously thanks for all memories and even if we go on different paths. I hope we could always stay as be friends .I will always cherish the memories i got with u all❤️"', author: '- Radhika' },
+      { text: '"BSc padichalum MSc padichalum enea marakaruthu\nBut seriously thanks for all memories and even if we go on different paths.  "', author: '- Radhika' },
+      { text: '"I hope we could always stay as be friends.I will always cherish the memories i got with u all❤️"', author: '- Radhika' },
       { text: '"I miss you my friends"', author: '- Sangeeth kumar.M' },
       { text: '"Never break bondss! "', author: '- Nihal M.S' },
       { text: '"Class room oru HOME aaki thannavar : ) Will miss u guyss"', author: '- Sreelekshmi ' },
       { text: '"Keep in touch"', author: '- Sandra. A. S' },
       { text: '"No matter where life takes you, believe in yourself."', author: '- No matter where life takes you, believe in yourself.' },
       { text: '"The two years felt just like Two Days "', author: '- Goutham krishna ' },
+      { text: '"Believe in yourself "', author: '- SACHIN S.S' },
       { text: '""', author: '- ' },
-      { text: '""', author: '- ' },
-     { text: '"This slam book is more than just pages. It holds stories, smiles, and unforgettable moments. On behalf of INFYNION, heartfelt wishes for a future filled with success, happiness, and lasting connections."', author: '- INFYNION' },
+     { text: '"On behalf of INFYNION, heartfelt wishes for a future filled with success, happiness, and lasting connections."', author: '- INFYNION' },
       { text: '""', author: '- ' },
       { text: '""', author: '- ' }
       // ADD NEW MESSAGES HERE
@@ -4258,7 +3790,7 @@
     // ========================================
     // 🎬 VIDEO GALLERY & MODAL
     // ========================================
-   /* let currentVideoIndex = 0;
+    let currentVideoIndex = 0;
     const videoModal = document.getElementById('videoModal');
     const videoTitle = document.getElementById('videoTitle');
     const modalVideoPlayer = document.getElementById('modalVideoPlayer');
@@ -4314,82 +3846,8 @@
       if (e.target === videoModal) {
         closeVideoModal();
       }
-    });*/
-
-
-let currentVideoIndex = 0;
-
-const videoModal = document.getElementById('videoModal');
-const videoTitle = document.getElementById('videoTitle');
-const modalVideoPlayer = document.getElementById('modalVideoPlayer');
-const modalVideoSource = document.getElementById('modalVideoSource');
-const videoPlaceholder = document.getElementById('videoPlaceholder');
-
-function openVideoModal(index) {
-  currentVideoIndex = index;
-  displayVideo(currentVideoIndex);
-
-  videoModal.classList.add('open');
-  document.body.classList.add('modal-open'); // FIX
-}
-
-function displayVideo(index) {
-  const video = videos[index];
-  videoTitle.textContent = video.title;
-
-  modalVideoPlayer.pause();
-  modalVideoPlayer.currentTime = 0;
-
-  modalVideoSource.src = video.src;
-  modalVideoPlayer.load();
-
-  modalVideoPlayer.style.display = 'none';
-  videoPlaceholder.style.display = 'flex';
-
-  modalVideoPlayer.onloadeddata = () => {
-    modalVideoPlayer.style.display = 'block';
-    videoPlaceholder.style.display = 'none';
-  };
-
-  modalVideoPlayer.onerror = () => {
-    modalVideoPlayer.style.display = 'none';
-    videoPlaceholder.style.display = 'flex';
-  };
-}
-
-function navigateVideo(direction) {
-  modalVideoPlayer.pause();
-  modalVideoPlayer.currentTime = 0;
-
-  currentVideoIndex =
-    (currentVideoIndex + direction + videos.length) % videos.length;
-
-  displayVideo(currentVideoIndex);
-}
-
-function closeVideoModal() {
-  modalVideoPlayer.pause();
-  modalVideoPlayer.currentTime = 0;
-
-  videoModal.classList.remove('open');
-  document.body.classList.remove('modal-open'); // FIX
-}
-
-/* click outside video to close */
-videoModal.addEventListener('click', (e) => {
-  if (e.target === videoModal) {
-    closeVideoModal();
-  }
-});
-
-/* ESC key close (professional touch) */
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape' && videoModal.classList.contains('open')) {
-    closeVideoModal();
-  }
-});
-
-   
+    });
+    
     // ========================================
     // 📖 SLAM BOOK & MODAL
     // ========================================
@@ -4541,9 +3999,4 @@ document.addEventListener('keydown', (e) => {
     });
   </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9c390a78e5bf0c04',t:'MTc2OTM1NzQyOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
-
 </html>
-
-
-
-
