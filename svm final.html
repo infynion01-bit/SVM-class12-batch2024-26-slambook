@@ -2856,11 +2856,8 @@
     <div class="video-display" id="videoDisplay"><button class="fullscreen-btn" id="fullscreenBtn" title="Fullscreen View" aria-label="Fullscreen View">⛶</button>
      <video id="mainVideoPlayer" class="main-video-player"><source id="mainVideoSource" src="farevid.mp4" type="video/mp4"> Your browser does not support the video tag.
      </video>
-     <div class="video-placeholder-text">
-      <div>
-       🎬
-      </div>
-      <p>Select a movie to play</p>
+    
+      
      </div>
     </div>
     <div class="video-title-display">
@@ -3015,8 +3012,14 @@
       { src: 'movie-2.mp4', title: 'Class Trip Documentary' },
       { src: 'movie-3.mp4', title: 'Farewell Ceremony - Full Event' }
       // ADD NEW MOVIES HERE
-    ];
-    
+    ];  
+   /* 
+const moviesData = [
+  { src: "https://www.w3schools.com/html/mov_bbb.mp4", title: "Test Movie" }
+];          */
+
+
+
     // ========================================
     // 🎬 MOVIE PLAYER
     // ========================================
@@ -3082,7 +3085,7 @@
     
     // Play/Pause
     playPauseBtn.addEventListener('click', function() {
-      if (!mainVideoPlayer.src) return;
+      if (!mainVideoPlayer.currentSrc) return;
       
       if (isMoviePlaying) {
         mainVideoPlayer.pause();
@@ -3100,14 +3103,14 @@
     
     // Rewind 10 seconds
     rewindBtn.addEventListener('click', function() {
-      if (mainVideoPlayer.src) {
+      if (mainVideoPlayer.currentSrc) {
         mainVideoPlayer.currentTime = Math.max(0, mainVideoPlayer.currentTime - 10);
       }
     });
     
     // Forward 10 seconds
     forwardBtn.addEventListener('click', function() {
-      if (mainVideoPlayer.src) {
+      if (mainVideoPlayer.currentSrc) {
         mainVideoPlayer.currentTime = Math.min(mainVideoPlayer.duration, mainVideoPlayer.currentTime + 10);
       }
     });
@@ -3187,7 +3190,7 @@
     
     // Fullscreen functionality
     fullscreenBtn.addEventListener('click', function() {
-      if (!mainVideoPlayer.src || !moviesData[currentMovieIndex]) return;
+      if (!mainVideoPlayer.currentSrc || !moviesData[currentMovieIndex]) return;
       
       openFullscreenMovie();
     });
@@ -3277,9 +3280,13 @@
         }
         return;
       }
+
+
+
+
       
       // Main player controls
-      if (!mainVideoPlayer.src) return;
+      if (!mainVideoPlayer.currentSrc) return;
       
       // Only if no other modal is open
       if (!lightbox.classList.contains('open') && 
@@ -3301,6 +3308,9 @@
         }
       }
     });
+
+    // ✅ Start movie player
+initializeMoviePlayer();
     
     /* ========================================
        👥 STUDENT DATA
